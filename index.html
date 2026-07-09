@@ -2,6 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
+<title>Психолог Антонина</title>
+<meta name="description" content="Пространство для встречи с собой">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,12 +14,37 @@ body{margin:0}
 ::selection{background:rgba(0,0,0,0.12)}
 
 @media (max-width: 768px) {
-  /* Nav: hide text links, keep button */
+  /* Nav: show burger, hide links */
   nav > div:first-child {
     display: none !important;
   }
   nav {
     justify-content: flex-end !important;
+    gap: 12px !important;
+  }
+
+  /* Burger button */
+  .burger {
+    display: flex !important;
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+  .mobile-menu.open {
+    display: flex !important;
+  }
+  .mobile-menu a {
+    font-size: 20px;
+    text-decoration: none;
   }
 
   /* Hero: single column */
@@ -253,7 +280,23 @@ comp._mount(`<div style="--bg:{{ bg }};--bg-alt:{{ bgAlt }};--text:{{ text }};--
       <a href="#about" style="font-size:14px;color:var(--muted);text-decoration:none;">Обо мне</a>
     </div>
     <a href="#contact" style="font-size:13.5px;font-weight:500;color:var(--bg);text-decoration:none;background:var(--accent);padding:9px 18px;border-radius:100px;white-space:nowrap;">Записаться</a>
+    <button class="burger" onclick="document.querySelector('.mobile-menu').classList.toggle('open');this.classList.toggle('active')" style="display:none;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;padding:6px;z-index:201;">
+      <svg width="26" height="20" viewBox="0 0 26 20" stroke="var(--text)" stroke-width="2" stroke-linecap="round"><line x1="3" y1="2" x2="23" y2="2"/><line x1="3" y1="10" x2="23" y2="10"/><line x1="3" y1="18" x2="23" y2="18"/></svg>
+    </button>
   </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" style="display:none;background:color-mix(in srgb, var(--bg) 96%, transparent);backdrop-filter:blur(18px);">
+    <button onclick="document.querySelector('.mobile-menu').classList.remove('open');document.querySelector('.burger').classList.remove('active')" style="position:absolute;top:20px;right:24px;background:none;border:none;cursor:pointer;padding:8px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" stroke="var(--text)" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
+    <a href="#approach" onclick="document.querySelector('.mobile-menu').classList.remove('open');document.querySelector('.burger').classList.remove('active')" style="color:var(--text);font-family:'Newsreader',serif;font-size:22px;">Как работаю</a>
+    <a href="#topics" onclick="document.querySelector('.mobile-menu').classList.remove('open');document.querySelector('.burger').classList.remove('active')" style="color:var(--text);font-family:'Newsreader',serif;font-size:22px;">Запросы</a>
+    <a href="#format" onclick="document.querySelector('.mobile-menu').classList.remove('open');document.querySelector('.burger').classList.remove('active')" style="color:var(--text);font-family:'Newsreader',serif;font-size:22px;">Формат</a>
+    <a href="#education" onclick="document.querySelector('.mobile-menu').classList.remove('open');document.querySelector('.burger').classList.remove('active')" style="color:var(--text);font-family:'Newsreader',serif;font-size:22px;">Образование</a>
+    <a href="#about" onclick="document.querySelector('.mobile-menu').classList.remove('open');document.querySelector('.burger').classList.remove('active')" style="color:var(--text);font-family:'Newsreader',serif;font-size:22px;">Обо мне</a>
+    <a href="#contact" onclick="document.querySelector('.mobile-menu').classList.remove('open');document.querySelector('.burger').classList.remove('active')" style="font-weight:500;color:var(--bg);text-decoration:none;background:var(--accent);padding:12px 28px;border-radius:100px;font-size:16px;margin-top:12px;">Записаться</a>
+  </div>
 
   <!-- HERO -->
   <section id="hero" style="max-width:1220px;margin:0 auto;padding:clamp(48px,8vw,96px) clamp(20px,5vw,40px) 40px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(32px,5vw,64px);align-items:center;position:relative;z-index:1;">
