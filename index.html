@@ -132,6 +132,24 @@ body{margin:0}
     font-size: 28px !important;
   }
 }
+
+/* Styles limited to first-screen photography. */
+#hero .hero-photos{position:relative;height:clamp(360px,42vw,500px)}
+#hero .portrait{position:relative;overflow:hidden;border-radius:22px;height:100%;background:var(--bg-alt)}
+#hero .portrait img{position:absolute;max-width:none;height:auto!important;display:block;filter:none}
+#hero .portrait.photo-5460 img{width:150%;left:-25%;bottom:-12%}
+#hero .portrait.photo-5462 img{width:100%;height:100%!important;left:0;top:0;bottom:auto;object-fit:cover;object-position:50% 65%}
+#hero .hero-photos.combined{padding-left:12%;padding-bottom:24px;box-sizing:border-box}
+#hero .forest{width:100%;height:100%;object-fit:cover;border-radius:22px;display:block}
+#hero .combined .portrait{position:absolute;left:0;bottom:0;width:60%;height:76%;border:6px solid var(--bg);box-sizing:border-box;box-shadow:0 8px 24px rgba(38,42,29,.12)}
+@media(max-width:768px){
+#hero .hero-photos{height:auto;aspect-ratio:1.15}
+#hero .hero-photos.combined{aspect-ratio:1.08;padding-bottom:18px}
+#hero .hero-photos .forest{height:100%!important}
+#hero .hero-photos .portrait img{height:auto!important}
+#hero .hero-photos .portrait.photo-5462 img{height:100%!important;object-position:50% 55%}
+#hero .combined .portrait{width:62%;height:78%;border-width:5px}
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Психолог Антонина Морозова","description":"Психолог-консультант, гештальт-терапевт. Бережное пространство для встречи с собой.","url":"https://www.tonya-tut.space","provider":{"@type":"Person","name":"Антонина Морозова","jobTitle":"Психолог-консультант","knowsAbout":["Гештальт-терапия","Психологическое консультирование","Соматические практики"]},"areaServed":"Онлайн","serviceType":"Психологическое консультирование"}
@@ -330,9 +348,7 @@ comp._mount(`<div style="--bg:{{ bg }};--bg-alt:{{ bgAlt }};--text:{{ text }};--
         <a href="#approach" style="font-size:15px;font-weight:500;color:var(--text);background:transparent;border:1px solid var(--border);padding:13px 25px;border-radius:100px;text-decoration:none;">Узнать больше</a>
       </div>
     </div>
-    <div style="position:relative;">
-      <img src="ingmar--tm0PIhVHFQ-unsplash.jpg" alt="Лесная тропинка в мягком свете — пространство для встречи с собой" style="width:100%;height:clamp(360px,42vw,500px);object-fit:cover;border-radius:22px;filter:var(--photo-filter);display:block;">
-    </div>
+    <div class="hero-photos"><div class="portrait photo-5462"><img src="tonya-portrait.jpg" alt="Антонина Морозова, психолог-консультант"></div></div>
   </section>
 
   <!-- Botanical divider: branch with leaves -->
